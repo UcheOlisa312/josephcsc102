@@ -1,22 +1,38 @@
-class Online:
-    cost_of_oranges= 50
-    def __init__(self):
-        self.total_amount_of_oranges=500
+class Orange:
+    def __init__(self, thequantity, thepriceperunit):
+        self.quantity = thequantity
+        self.priceperunit = thepriceperunit
 
-    def buy(self):
-        print("The total amount of oranges we have is:" +{self.total_amount_of_oranges})
-        print("the price of one orange is ${self.cost_of_oranges}")
-        customers_amount = ("Enter the anount of oranges you want: " )
-        if customer_amount>self.total_amount_of_oranges:
-            print("the amount of oranges that you entewred is more than what we have.")
-        elif customer_amount < 1:
-            print("the amount of oranges you entered is not reasonable.")
-        elif 500>customers_amount>1:
-            choice=input("please confirm payment(yes/no): " )
-            if choice == "yes":
-                print("thanks for your patronage")
-            elif choice == "no":
-                print("Your purchase has been terminated")
+    def checkQuantityRequested (self, thequantity):
+        if( thequantity > self.quantity ):
+            return  -1
+        else:
+            return  thequantity
+
+    def calculateTotalCost(self, thequantity):
+        return  self.priceperunit * thequantity
+
+    @staticmethod
+    def displayTotalCost(cost):
+        print('Total cost is #' + str(cost))
+
+    @staticmethod
+    def thankYouMessage():
+        print('Thanks for shopping with us !')
 
 
+theoranges = Orange(20,10)
 
+print('Welcome to Owolabi Store, Please select Orange quantity!')
+theorder = input()
+quantitychecker = theoranges.checkQuantityRequested(int(theorder))
+
+while(quantitychecker  == -1):
+    print('Welcome to Owolabi Store, Please enter Orange quanity not more than ' + str (theoranges.quantity))
+    theorder = input()
+    quantitychecker = theoranges.checkQuantityRequested(int(theorder))
+
+theTotalCost = theoranges.calculateTotalCost(quantitychecker)
+
+Orange.displayTotalCost(theTotalCost)
+Orange.thankYouMessage()
