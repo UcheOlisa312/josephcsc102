@@ -17,7 +17,7 @@ class XBank:
         if(amounttowithdraw > self.accountbalance):
             print("Sorry we are not able to process at this time")
         else:
-            print("Collect your cash....Thanks for banking with Xbank")
+            print("Collect your cash....Thanks for banking with Xbank")+
     
     def ChangePin(self, newPin):   
         self.atmpin = newPin
@@ -28,7 +28,7 @@ class XBank:
         
         
 
-f = open("C:\\Users\\SST-LAB\\Desktop\\database.txt",'r')
+f = open("C:\\Users\\JOJO\\Documents\\josephcsc102\\database.txt",'r')
 
 #print(f.readline())
 password = []
@@ -49,5 +49,7 @@ pasw = input()
 
 if(pasw ==password[0]):
     customer = XBank(password[0],accountB[0],name[0])
+    print(customer)
 else:
     print("sorry your password does not match")
+
